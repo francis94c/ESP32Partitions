@@ -1,9 +1,14 @@
 #!/bin/sh
 
+#
+# Author: Francis Ilechukwu.
+# Credits: Elochukwu Ifediora C.
+#
 # This File is responsible for all compilations and generation of distributions.
 # This will shell script will output the following
 # 1) An Archive containg the folder and structure to extract to your Arduino IDE
 # Tools Directory of you wish to install manually.
+# 2) And a setup.sh file for easy/automatic installation.
 #
 
 # Location of pde.jar, the jar which contains the Editor ant Tools classes.

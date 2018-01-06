@@ -1,4 +1,10 @@
 #!/bin/bash
+
+#
+#Author: Francs Ilechukwu.
+#Credits: Elochukwu Ifediora C.
+#
+
 echo ""
 echo "Self Extracting Installer"
 echo ""
