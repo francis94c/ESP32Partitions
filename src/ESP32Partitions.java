@@ -56,7 +56,9 @@ public class ESP32Partitions implements Tool {
       in.close();
       String docsPath = new String(b);
       docsPath = docsPath.split("\\s\\s+")[4] + "\\";
-      Process pr = rt.exec("python " + docsPath + "Arduino\\tools\\ESP32Partitions\\tool\\esp-partition.py");
+			command = new StringBuilder("python ").append(docsPath).append("Arduino");
+			command.append("\\tools\\ESP32Partitions\\tool\\esp-partition.py");
+      Process pr = rt.exec(command.toString());
     } catch (Exception e) {
 			e.printStackTrace();
     }
