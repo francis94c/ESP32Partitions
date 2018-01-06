@@ -39,5 +39,6 @@ cd dist && zip -r ESP32Partitions.zip * && cd ..
 echo "Cleaning Up..."
 
 rm -r bin/com
+rm jar/ESP32Partitions.jar
 
 echo "Done"
