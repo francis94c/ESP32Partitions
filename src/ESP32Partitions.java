@@ -7,18 +7,41 @@ import java.lang.StringBuilder;
 import processing.app.Editor;
 import processing.app.tools.Tool;
 
+/**
+ * Author: Francis Ilechukwu.
+ * Credits: Elochukwu Ifediora C.
+ *
+ * This is the java wrapper class for the esp-partition.py script. this class is
+ * necessary for Arduino IDE to integrate this tool in its tools menu.
+ * this is basically a class that implmements the Tools interface which has the
+ * necessary functins that the Arduini IDe will call to fully integrate the tool.
+ */
 public class ESP32Partitions implements Tool {
 
+	// Jsut a reference to the Arduino IDE text/code editor.
 	Editor editor;
 
+	/**
+	 * [init called on startup of the IDE.]
+	 * @param Editor editor [the text/code editor of Arduino IDE.]
+	 */
   public void init(Editor editor) {
     this.editor = editor;
   }
 
+	/**
+	 * [getMenuTitle the function that is called by Arduino IDE to get the name
+	 * with which this tool will appear as in the tools menu.]
+	 * @return [String menu name.]
+	 */
   public String getMenuTitle() {
     return "ESP32 Partition Manager";
   }
 
+	/**
+	 * [run called to start the tool. i.e. when a user clicks or selects the tool
+	 * from the tools menu.]
+	 */
   public void run() {
 		Runtime rt = Runtime.getRuntime();
 		try {
