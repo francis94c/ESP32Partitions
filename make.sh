@@ -30,6 +30,12 @@ if [ ! -d bin ]; then
   mkdir -p bin;
 fi
 
+echo "Cleaning Up Stage 1..."
+
+if [ -f dist/setup.sh ]; then
+  rm dist/setup.sh
+fi
+
 echo "Done Checking and Making Directories"
 
 # Compiling Java Program
@@ -54,14 +60,10 @@ echo "Packaging Distribution..."
 
 cd dist && zip -r ESP32Partitions.zip * && cd ..
 
-echo "Cleaning Up Stage 1..."
+echo "Cleaning Up Stage 2..."
 
 rm -r bin/com
 rm jar/ESP32Partitions.jar
-
-if [ -f dist/Installer.sh ]; then
-  rm dist/Installer.sh
-fi
 
 # Copy the install.vbs script that will actually do the installation on the
 # target machine into our payload folder. VBScript was used for this to counter
@@ -78,8 +80,10 @@ cp decompress.sh dist/setup.sh && cd dist/ESP32Partitions
 # Decompress and pour the output into our setup script.
 cat binaries.tar >> ../setup.sh && cd ../..
 
-echo "Cleaning Up Stage 2..."
+echo "Cleaning Up Stage 3..."
 
 rm -r dist/ESP32Partitions
 
 echo "Done"
+
+read -n1 -r -p "Press any Key to Continue..."

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #
-#Author: Francs Ilechukwu.
-#Credits: Elochukwu Ifediora C.
+# Author: Francs Ilechukwu.
+# Credits: Elochukwu Ifediora C.
 #
 
 echo ""
@@ -33,6 +33,8 @@ cd $CDIR
 
 # Delete the Temporary Directory.
 rm -rf $TMPDIR
+
+read -n1 -r -p "Press any Key to Continue..."
 
 # Exit Script... Anything below '__ARCHIVE_BELOW__' is gibberish and binary and
 # the interpreter could really suffer from food poisining if it eats it.
