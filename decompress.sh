@@ -6,7 +6,7 @@
 #
 
 echo ""
-echo "Self Extracting Installer"
+echo "Self Extracting ESP32 Partition Manager Installer"
 echo ""
 
 # Create Temporary Directory.
@@ -15,15 +15,20 @@ TMPDIR=`mktemp -d /tmp/self_extract.XXXXXX`
 # Get Archive start point.
 ARCHIVE=$(awk '/^__ARCHIVE_BELOW__/ {print NR + 1; exit 0; }' "${0}")
 
+echo "Extracting..."
+echo ""
+
 # Extract into temporary directory.
-tail -n+${ARCHIVE} "${0}" | tar zx -C ${TMPDIR}
+tail -n+${ARCHIVE} "${0}" | tar zxv -C ${TMPDIR}
 
 CDIR=`pwd`
 
 # Go to the Temporary Directory.
 cd $TMPDIR
 
-echo "Running Installer"
+echo ""
+
+echo "Installing..."
 
 # Execute Installer Script.
 CScript install.vbs
