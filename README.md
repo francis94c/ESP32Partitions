@@ -4,7 +4,7 @@ The ESP32 Partition Manager is tool that eases the p
 
 # To Install  
 
-- Download the latest release of this project.
+- Download the latest release of this project from the releases page (`ESP32Partitions.zip` or `setup.sh`).
 - Extract the contents of ESP32Partitions.zip into your Arduino Tools Directory `C:\Users\%User Name%\Documents\Arduino\tools` OR
 - Simply Run `setup.sh`
 - Done
