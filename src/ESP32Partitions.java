@@ -45,16 +45,22 @@ public class ESP32Partitions implements Tool {
   public void run() {
 		Runtime rt = Runtime.getRuntime();
 		try {
+			String docsPath = null;
+			String OS = System.getProperty("os.name").toLowerCase();
 			StringBuilder command = new StringBuilder("reg query \"HKCU\\Software\\");
-			command.append("Microsoft\\Windows\\CurrentVersion\\Explorer\\");
-			command.append("Shell Folders\" /v personal");
-			Process p = rt.exec(command.toString());
-      p.waitFor();
-      InputStream in = p.getInputStream();
-      byte[] b = new byte[in.available()];
-      in.read(b);
-      in.close();
-      String docsPath = new String(b);
+			if (OS.indexOf("win") >= 0) {
+				command.append("Microsoft\\Windows\\CurrentVersion\\Explorer\\");
+				command.append("Shell Folders\" /v personal");
+				Process p = rt.exec(command.toString());
+      	p.waitFor();
+      	InputStream in = p.getInputStream();
+      	byte[] b = new byte[in.available()];
+      	in.read(b);
+      	in.close();
+      	docsPath = new String(b);
+			} else if (OS.indexOf("linux") >= 0) {
+				docsPath = System.getenv("HOME");
+			}
       docsPath = docsPath.split("\\s\\s+")[4] + "\\";
 			command = new StringBuilder("python ").append(docsPath).append("Arduino");
 			command.append("\\tools\\ESP32Partitions\\tool\\esp-partition.py");
