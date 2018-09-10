@@ -57,11 +57,11 @@ public class ESP32Partitions implements Tool {
       	byte[] b = new byte[in.available()];
       	in.read(b);
       	in.close();
-      	docsPath = new String(b);
+				docsPath = new String(b);
+				docsPath = docsPath.split("\\s\\s+")[4] + "\\";
 			} else if (OS.indexOf("linux") >= 0) {
 				docsPath = System.getenv("HOME");
 			}
-      docsPath = docsPath.split("\\s\\s+")[4] + "\\";
 			command = new StringBuilder("python ").append(docsPath).append("Arduino");
 			command.append("\\tools\\ESP32Partitions\\tool\\esp-partition.py");
       Process pr = rt.exec(command.toString());
